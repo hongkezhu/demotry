@@ -1,7 +1,5 @@
+// this is a fake comments on Tree
 import java.util.*;
-
-
-
     class Node{
         public int data;
         public Node left, right, parent;
