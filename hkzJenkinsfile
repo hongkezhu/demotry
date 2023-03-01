@@ -1,0 +1,36 @@
+pipeline {
+    agent { 
+        node {
+            label 'hhhAgent'
+            }
+      }
+    triggers {
+        pollSCM '*/5 * * * *'
+    }
+    stages {
+        stage('Build') {
+            steps {
+                echo "Building.."
+                sh '''
+                javac Tree.java
+                '''
+            }
+        }
+        stage('Test') {
+            steps {
+                echo "Testing.."
+                sh '''
+                java Tree
+                '''
+            }
+        }
+        stage('Deliver') {
+            steps {
+                echo 'Deliver....'
+                sh '''
+                echo "doing delivery stuff.."
+                '''
+            }
+        }
+    }
+}
